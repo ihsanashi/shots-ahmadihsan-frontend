@@ -2,7 +2,6 @@ CREATE DATABASE shots_ahmadihsan;
 
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
-  alt_text VARCHAR(50) NOT NULL,
   caption TEXT,
   location TEXT,
   aws_s3_path TEXT NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE photos (
 
 CREATE TABLE stories (
   id SERIAL PRIMARY KEY,
-  alt_text VARCHAR(50) NOT NULL,
   caption TEXT,
   location TEXT,
   aws_s3_path TEXT NOT NULL,
