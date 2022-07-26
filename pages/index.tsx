@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { supabase } from '../utils/supabaseClient';
+import { supabase } from '../src/utils/supabaseClient';
+import { Photo } from '../src/types/photo';
 
 export async function getStaticProps({}) {
   const { data, error } = await supabase
@@ -13,16 +14,6 @@ export async function getStaticProps({}) {
     },
   };
 }
-
-type Photo = {
-  id: number;
-  caption: string;
-  location: string;
-  aws_s3_path: string;
-  cloudinary_path: string;
-  taken_at: string;
-  created_at: string;
-};
 
 export default function Home({ photos }: { photos: Photo[] }) {
   return (
