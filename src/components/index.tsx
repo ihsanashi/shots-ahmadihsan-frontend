@@ -1,4 +1,6 @@
 export { Gallery } from './Gallery';
+export { Logo } from './Logo';
+export { ThemeToggle } from './ThemeToggle';
+export { ViewToolbar } from './ViewToolbar';
 
-export { FeedBar } from './FeedBar/index';
 export { Layout } from './Layout/index';

@@ -1,21 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '../../../public/logo.svg';
+import { Logo, ThemeToggle, ViewToolbar } from '../index';
 
 export const Navbar = () => {
   return (
-    <section className='max-w-full mx-auto md:max-w-3xl lg:max-w-7xl'>
-      <nav className='flex flex-none w-full py-8 mx-auto'>
-        <Link href='/'>
-          <a>
-            <Image
-              src={Logo}
-              alt="Logo of Ahmad Ihsan's website"
-              height={48}
-              width={48}
-            />
-          </a>
-        </Link>
+    <section className='max-w-full p-5 mx-auto lg:p-8 md:max-w-3xl lg:max-w-7xl'>
+      <nav className='grid w-full h-12 grid-flow-col mx-auto auto-cols-auto'>
+        <Logo />
+        <ViewToolbar />
+        <ThemeToggle />
       </nav>
     </section>
   );
