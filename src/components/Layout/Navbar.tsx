@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Logo, ThemeToggle, ViewToolbar } from '../index';
+import { Logo, ThemeSwitch, ViewToolbar } from '../index';
 
 export const Navbar = () => {
   return (
@@ -8,7 +8,7 @@ export const Navbar = () => {
       <nav className='grid w-full h-12 grid-flow-col mx-auto auto-cols-auto'>
         <Logo />
         <ViewToolbar />
-        <ThemeToggle />
+        <ThemeSwitch />
       </nav>
     </section>
   );
