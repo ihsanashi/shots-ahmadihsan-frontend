@@ -1,4 +1,4 @@
-export type Photo = {
+export type Media = {
   id: number;
   caption: string;
   location: string;
