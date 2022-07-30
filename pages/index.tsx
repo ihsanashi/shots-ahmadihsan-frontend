@@ -23,7 +23,6 @@ export default function Home({ photos }: { photos: Photo[] }) {
       {photos.map((photo) => (
         <div key={photo.id}>
           <Image src={photo.cloudinary_path} alt='' height={400} width={400} />
-          <p className='text-gray-600'>{photo.caption}</p>
         </div>
       ))}
     </Layout>

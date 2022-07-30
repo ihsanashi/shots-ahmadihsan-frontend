@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { Logo, ThemeSwitch, ViewToolbar } from '../index';
 
 export const Navbar = () => {
