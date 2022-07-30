@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { supabase } from '../src/utils/supabaseClient';
-import { Photo } from '../src/types/photo';
+import { Media } from '../src/types';
 import { Gallery, Layout } from '../src/components';
 
-export async function getStaticProps({}) {
+export async function getStaticProps() {
   const { data, error } = await supabase
     .from('ig_photos')
     .select('*')
@@ -16,7 +16,7 @@ export async function getStaticProps({}) {
   };
 }
 
-export default function Home({ photos }: { photos: Photo[] }) {
+export default function Home({ photos }: { photos: Media[] }) {
   return (
     <Layout>
       <Gallery />
