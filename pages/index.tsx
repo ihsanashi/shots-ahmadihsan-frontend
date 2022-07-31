@@ -1,26 +1,41 @@
 import Image from 'next/image';
 import { supabase } from '../src/utils/supabaseClient';
-import { Media } from '../src/types';
+import { HomepageData } from '../src/types';
 import { Gallery, Layout } from '../src/components';
 
 export async function getStaticProps() {
-  const { data, error } = await supabase
+  const { data: photos, error: photosError } = await supabase
     .from('ig_photos')
     .select('*')
-    .range(0, 10);
+    .range(0, 4);
+
+  const { data: stories, error: storiesError } = await supabase
+    .from('ig_stories')
+    .select('*')
+    .range(0, 4);
+
+  const { data: videos, error: videosError } = await supabase
+    .from('ig_videos')
+    .select('*');
 
   return {
     props: {
-      photos: data,
+      data: {
+        photos,
+        stories,
+        videos,
+      },
     },
   };
 }
 
-export default function Home({ photos }: { photos: Media[] }) {
+export default function Home({ data }: { data: HomepageData }) {
+  const HOMEPAGE_MEDIA = Object.values(data).flat();
+
   return (
     <Layout>
       <Gallery />
-      {photos.map((photo) => (
+      {data.photos.map((photo) => (
         <div key={photo.id}>
           <Image src={photo.cloudinary_path} alt='' height={400} width={400} />
         </div>
