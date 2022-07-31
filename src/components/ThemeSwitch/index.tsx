@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { Button, IconButton, Flex } from './';
+import { Button, IconButton, Flex } from '..';
 import { useTheme } from 'next-themes';
-import { Switch, SwitchThumb } from './Switch';
+import { Switch, SwitchThumb } from '../Switch';
 
 export function ThemeSwitch() {
   const { theme, setTheme } = useTheme();

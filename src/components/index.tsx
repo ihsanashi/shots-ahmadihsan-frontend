@@ -3,7 +3,6 @@ export { Box } from './Box';
 export { Button } from './Button';
 export { Container } from './Container';
 export { Flex } from './Flex';
-export { Gallery } from './Gallery';
 export { Grid } from './Grid';
 export { IconButton } from './IconButton';
 export { Logo } from './Logo';
