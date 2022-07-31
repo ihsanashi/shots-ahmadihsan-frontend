@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Container, Layout } from '../../src/components';
+import { Container, Grid, Layout } from '../../src/components';
 import { Media } from '../../src/types';
 import { supabase } from '../../src/utils/supabaseClient';
 
@@ -17,16 +17,26 @@ export default function StoriesPage({ stories }: { stories: Media[] }) {
   return (
     <Layout>
       <Container>
-        {stories.map((story) => (
-          <div key={story.id}>
-            <Image
-              src={story.cloudinary_path}
-              alt=''
-              height={400}
-              width={400}
-            />
-          </div>
-        ))}
+        <Grid columns='3' gap='4'>
+          {stories.map((story) => (
+            <div key={story.id}>
+              {story.path.toLocaleLowerCase().includes('mp4') ? (
+                <video height={400} width={400} controls>
+                  <source src={story.cloudinary_path} type='video/mp4' />
+                  <source src={story.aws_s3_path} type='video/mp4' />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <Image
+                  src={story.cloudinary_path}
+                  alt=''
+                  height={400}
+                  width={400}
+                />
+              )}
+            </div>
+          ))}
+        </Grid>
       </Container>
     </Layout>
   );
