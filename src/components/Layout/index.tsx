@@ -2,10 +2,10 @@ export { Footer } from './Footer';
 export { Navbar } from './Navbar';
 
 import { ReactNode } from 'react';
-import { Footer, Navbar } from './index'
+import { Footer, Navbar } from './index';
 
 interface Props {
-  children?: ReactNode;
+  children?: ReactNode|ReactNode[];
 }
 
 export const Layout = ({ children }: Props) => {
@@ -17,4 +17,3 @@ export const Layout = ({ children }: Props) => {
     </>
   );
 };
-
