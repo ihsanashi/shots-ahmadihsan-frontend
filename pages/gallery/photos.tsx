@@ -1,19 +1,24 @@
 import Image from 'next/image';
 import { Container, Layout } from '../../src/components';
 import { Media } from '../../src/types';
-import { supabase } from '../../src/utils/supabaseClient';
+import { useQuery } from '@tanstack/react-query';
+import { getPhotos } from '../../src/api';
 
 export async function getStaticProps() {
-  const { data, error } = await supabase.from('ig_photos').select('*');
+  const photos = await getPhotos();
 
   return {
     props: {
-      photos: data,
+      photos,
     },
   };
 }
 
 export default function PhotosPage({ photos }: { photos: Media[] }) {
+  const { data } = useQuery(['photos'], getPhotos, {
+    initialData: photos,
+  });
+
   return (
     <Layout>
       <Container>

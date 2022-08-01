@@ -1,13 +1,13 @@
 import { Container, Layout } from '../../src/components';
 import { Media } from '../../src/types';
-import { supabase } from '../../src/utils/supabaseClient';
+import { getVideos } from '../../src/api';
 
 export async function getStaticProps() {
-  const { data, error } = await supabase.from('ig_videos').select('*');
+  const videos = await getVideos();
 
   return {
     props: {
-      videos: data,
+      videos,
     },
   };
 }
