@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Logo, ThemeSwitch } from '../index';
+import { Logo } from '../index';
 
 export const Navbar = () => {
   return (
@@ -17,7 +17,6 @@ export const Navbar = () => {
             <a>Videos</a>
           </Link>
         </div>
-        <ThemeSwitch />
       </nav>
     </section>
   );

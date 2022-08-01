@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { supabase } from '../src/utils/supabaseClient';
 import { HomepageData } from '../src/types';
-import { Grid, Layout } from '../src/components';
+import { Layout } from '../src/components';
 
 export async function getStaticProps() {
   const { data: photos, error: photosError } = await supabase
@@ -34,7 +34,7 @@ export default function Home({ data }: { data: HomepageData }) {
 
   return (
     <Layout>
-      <Grid columns='3' gap='4'>
+      <div className='grid grid-cols-3 gap-4'>
         {HOMEPAGE_MEDIA.map((media) => (
           <div key={media.id}>
             {media.path.toLocaleLowerCase().includes('mp4') ? (
@@ -53,7 +53,7 @@ export default function Home({ data }: { data: HomepageData }) {
             )}
           </div>
         ))}
-      </Grid>
+      </div>
     </Layout>
   );
 }
