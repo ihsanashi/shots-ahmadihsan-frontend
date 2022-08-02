@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import { Container, Layout } from '../../src/components';
-import { Media } from '../../src/types';
+import { Media } from '../../../src/types';
+import { getPhotos } from '../../../src/api';
 import { useQuery } from '@tanstack/react-query';
-import { getPhotos } from '../../src/api';
+import { Container, Layout } from '../../../src/components';
+import Link from 'next/link';
 
 export async function getStaticProps() {
   const photos = await getPhotos();
@@ -25,12 +26,14 @@ export default function PhotosPage({ photos }: { photos: Media[] }) {
         <div className='grid grid-cols-2 gap-4 md:grid-cols-3'>
           {photos.map((photo) => (
             <div key={photo.id}>
-              <Image
-                src={photo.cloudinary_path}
-                alt=''
-                height={400}
-                width={400}
-              />
+              <Link href={`/gallery/photos/${photo.id.toString()}`}>
+                <Image
+                  src={photo.cloudinary_path}
+                  alt=''
+                  height={400}
+                  width={400}
+                />
+              </Link>
             </div>
           ))}
         </div>

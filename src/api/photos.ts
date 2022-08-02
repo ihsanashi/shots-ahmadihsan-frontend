@@ -5,3 +5,13 @@ export async function getPhotos() {
 
   return data;
 }
+
+export async function getSinglePhoto({ id }: { id: string }) {
+  const { data, error } = await supabase
+    .from('ig_photos')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  return data;
+}
