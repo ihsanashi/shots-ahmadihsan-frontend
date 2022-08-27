@@ -1,19 +1,19 @@
 export { Footer } from './Footer';
-export { Navbar } from './Navbar';
+export { TopBar } from './TopBar';
 
 import { ReactNode } from 'react';
-import { Footer, Navbar } from './index';
+import { Footer, TopBar } from './index';
 
 interface Props {
-  children?: ReactNode|ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 export const Layout = ({ children }: Props) => {
   return (
-    <>
-      <Navbar />
+    <main className='max-w-full mx-auto md:max-w-4xl'>
+      <TopBar />
       {children}
       <Footer />
-    </>
+    </main>
   );
 };
