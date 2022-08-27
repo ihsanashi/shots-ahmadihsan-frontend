@@ -4,27 +4,14 @@ import { HomepageData } from '../src/types';
 import { Container, Layout } from '../src/components';
 
 export async function getStaticProps() {
-  const { data: photos, error: photosError } = await supabase
-    .from('ig_photos')
-    .select('*')
-    .range(0, 4);
-
-  const { data: stories, error: storiesError } = await supabase
-    .from('ig_stories')
-    .select('*')
-    .range(0, 4);
-
-  const { data: videos, error: videosError } = await supabase
-    .from('ig_videos')
-    .select('*');
+  const { data, error } = await supabase
+    .from('ig_backup')
+    .select()
+    .order('taken_at', { ascending: false });
 
   return {
     props: {
-      data: {
-        photos,
-        stories,
-        videos,
-      },
+      data,
     },
   };
 }
@@ -35,7 +22,7 @@ export default function Home({ data }: { data: HomepageData }) {
   return (
     <Layout>
       <Container>
-        <div className='grid grid-cols-2 gap-4 md:grid-cols-3'>
+        <div className='grid grid-cols-2 gap-1 md:grid-cols-3'>
           {HOMEPAGE_MEDIA.map((media) => (
             <div key={media.id}>
               {media.path.toLocaleLowerCase().includes('mp4') ? (
