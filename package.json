@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/client": "^3.4.1",
     "@supabase/supabase-js": "^1.35.4",
     "lodash.merge": "^4.6.2",
     "next": "12.2.2",
