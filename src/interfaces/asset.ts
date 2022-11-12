@@ -1,5 +1,5 @@
 export type Asset = {
-  _id: number;
+  _id: string;
   caption: string;
   location: string;
   visible: boolean;
