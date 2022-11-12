@@ -5,5 +5,5 @@ export const Container = ({
 }: {
   children: ReactNode | ReactNode[];
 }) => {
-  return <div className='container px-4 mx-auto'>{children}</div>;
+  return <section className='container px-4 mx-auto'>{children}</section>;
 };
