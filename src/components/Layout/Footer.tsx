@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
-    <section>
-      <p>Footer</p>
+    <section className='py-5'>
+      <p className='text-center'>© {new Date().getFullYear()} Ahmad Ihsan</p>
     </section>
   );
 };
