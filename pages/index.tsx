@@ -1,7 +1,5 @@
-import Image from 'next/image';
-import { useQuery, gql } from '@apollo/client';
 import { client, HOME_DATA } from '../lib/apollo';
-import { Container, Layout } from '../src/components';
+import { Container, Layout, Photo, Video } from '../src/components';
 import { Asset } from '../src/interfaces';
 
 interface AssetProps {
@@ -21,12 +19,23 @@ export async function getStaticProps() {
 }
 
 export default function Home({ assets }: AssetProps) {
-  console.log('assets: ', assets);
   return (
     <Layout>
       <Container>
         <div className='grid grid-cols-2 gap-1 md:grid-cols-3'>
-          {JSON.stringify(assets)}
+          {assets.map((asset) => {
+            if (asset.cloudinary_path.endsWith('.jpg')) {
+              return (
+                <Photo
+                  key={asset._id}
+                  src={asset.cloudinary_path}
+                  caption={asset.caption}
+                />
+              );
+            }
+
+            return <Video key={asset._id} src={asset.cloudinary_path}></Video>;
+          })}
         </div>
       </Container>
     </Layout>
